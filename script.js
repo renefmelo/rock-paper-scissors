@@ -69,5 +69,15 @@ function playRound(humanChoice, computerChoice) {
 }
 
 
-playRound(getHumanChoice(), getComputerChoice());
+function playGame() {
 
+	for (let i = 0; i < 5; i++) {
+		playRound(getHumanChoice(), getComputerChoice());
+	}
+
+	let winnerMessage = () => (humanScore > computerScore) ? `You're a winner baby!` : (humanScore < computerScore) ? `The machine won the game. The machine always wins.` : `The game ended in a draw! You should go for a rematch!`;
+
+	console.log(winnerMessage());
+}
+
+playGame();
