@@ -3,9 +3,27 @@ let computerScore = 0;
 
 let random = () => Math.floor(Math.random() * 100);
 
+let humanChoice = '';
 let getComputerChoice = () => (random() <= 33) ? `rock` : (random() <= 66) ? `paper` : `scissors`;
 
-let getHumanChoice = () => prompt(`rock paper or scissors`);
+const botoes = document.querySelector('.botoes');
+
+botoes.addEventListener('click', (event) => {
+	let target = event.target;
+
+	switch(target.id) {
+		case 'rock':
+			humanChoice = 'rock';
+			break;
+		case 'paper':
+			humanChoice = 'paper';
+			break;
+		case 'scissors':
+			humanChoice = 'scissors';
+			break;
+	}
+	playRound(humanChoice, getComputerChoice());
+});
 
 function playRound(humanChoice, computerChoice) {
 	humanChoice = humanChoice.toLowerCase();
@@ -68,7 +86,7 @@ function playRound(humanChoice, computerChoice) {
 
 }
 
-
+/*
 function playGame() {
 
 	for (let i = 0; i < 5; i++) {
@@ -81,3 +99,4 @@ function playGame() {
 }
 
 playGame();
+*/
