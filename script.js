@@ -8,6 +8,9 @@ let getComputerChoice = () => (random() <= 33) ? `rock` : (random() <= 66) ? `pa
 
 const botoes = document.querySelector('.botoes');
 
+const roundResult = document.querySelector('.roundResult');
+const score = document.querySelector('.score');
+
 botoes.addEventListener('click', (event) => {
 	let target = event.target;
 
@@ -31,72 +34,75 @@ function playRound(humanChoice, computerChoice) {
 
 	console.log(`pussy`);
 
+	if (winnerMessage.textContent != '') {
+		winnerMessage.textContent = '';
+		winnerMessage.remove();
+	}
+
 	if (humanChoice === `rock`) {
 		switch (computerChoice) {
 			case `rock`:
-				console.log(`It's a draw! Rock on Rock violence.`);
-				console.log(`Humanity: ${humanScore}, Machines: ${computerScore}`);
+				roundResult.textContent = `It's a draw! Rock on Rock violence.`;
+				score.textContent = `Humanity: ${humanScore}, Machines: ${computerScore}`
 				break;
 			case `paper`:
 				computerScore += 1;
-				console.log(`You lost! The computer's Paper folds around your Rock.`);
-				console.log(`Humanity: ${humanScore}, Machines: ${computerScore}`);
+				roundResult.textContent = `You lost! The computer's Paper folds around your Rock.`;
+				score.textContent = `Humanity: ${humanScore}, Machines: ${computerScore}`;
 				break;
 			case `scissors`:
 				humanScore += 1;
-				console.log(`You win! Your Rock breaks the computer's Scissors.`);
-				console.log(`Humanity: ${humanScore}, Machines: ${computerScore}`);
+				roundResult.textContent = `You win! Your Rock breaks the computer's Scissors.`;
+				score.textContent = `Humanity: ${humanScore}, Machines: ${computerScore}`;
 				break;
 		}
 	} else if (humanChoice === `paper`) {
 		switch (computerChoice) {
 			case `rock`:
 				humanScore += 1;
-				console.log(`You win! Your Paper paperizes the computer's Rock.`);
-				console.log(`Humanity: ${humanScore}, Machines: ${computerScore}`);
+				roundResult.textContent = `You win! Your Paper paperizes the computer's Rock.`;
+				score.textContent = `Humanity: ${humanScore}, Machines: ${computerScore}`;
 				break;
 			case `paper`:
-				console.log(`It's a draw! The Papers refuse to fight each other.`);
-				console.log(`Humanity: ${humanScore}, Machines: ${computerScore}`);
+				roundResult.textContent = `It's a draw! The Papers refuse to fight each other.`;
+				score.textContent = `Humanity: ${humanScore}, Machines: ${computerScore}`;
 				break;
 			case `scissors`:
 				computerScore += 1;
-				console.log(`You lose! The computer's Scissors cut through your Paper.`);
-				console.log(`Humanity: ${humanScore}, Machines: ${computerScore}`);
+				roundResult.textContent = `You lose! The computer's Scissors cut through your Paper.`;
+				score.textContent = `Humanity: ${humanScore}, Machines: ${computerScore}`;
 				break;
 		}
 	} else if (humanChoice === `scissors`) {
 		switch (computerChoice) {
 			case `rock`:
 				computerScore += 1;
-				console.log(`You lose! The computer's Rock absolutely destroys your Scissors.`);
-				console.log(`Humanity: ${humanScore}, Machines: ${computerScore}`);
+				roundResult.textContent = `You lose! The computer's Rock absolutely destroys your Scissors.`;
+				score.textContent = `Humanity: ${humanScore}, Machines: ${computerScore}`;
 				break;
 			case `paper`:
 				humanScore += 1;
-				console.log(`You win! Your Scissors rip the machine's Paper apart.`);
-				console.log(`Humanity: ${humanScore}, Machines: ${computerScore}`);
+				roundResult.textContent = `You win! Your Scissors rip the machine's Paper apart.`;
+				score.textContent = `Humanity: ${humanScore}, Machines: ${computerScore}`;
 				break;
 			case `scissors`:
-				console.log(`It's a draw! The Scissors start Scissoring.`);
-				console.log(`Humanity: ${humanScore}, Machines: ${computerScore}`);
+				roundResult.textContent = `It's a draw! The Scissors start Scissoring.`;
+				score.textContent = `Humanity: ${humanScore}, Machines: ${computerScore}`;
 				break;
 		}
 	}
 
-}
+	if (humanScore === 5 || computerScore === 5) {
+		let winnerText = () => (humanScore > computerScore) ? `You're a winner baby!` : (humanScore < computerScore) ? `The machine won the game. The machine always wins.` : `The game ended in a draw! You should go for a rematch!`;
 
-/*
-function playGame() {
-
-	for (let i = 0; i < 5; i++) {
-		playRound(getHumanChoice(), getComputerChoice());
+		winnerMessage.textContent = winnerText();
+		results.appendChild(winnerMessage);
+		
+		humanScore = 0;
+		computerScore = 0;
 	}
-
-	let winnerMessage = () => (humanScore > computerScore) ? `You're a winner baby!` : (humanScore < computerScore) ? `The machine won the game. The machine always wins.` : `The game ended in a draw! You should go for a rematch!`;
-
-	console.log(winnerMessage());
 }
 
-playGame();
-*/
+const winnerMessage = document.createElement(`p`);
+winnerMessage.classList.add(`winnerMessage`);
+const results = document.querySelector(`.results`);
