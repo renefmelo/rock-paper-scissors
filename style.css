@@ -1,0 +1,76 @@
+* {
+	margin: 0px;
+	padding: 0px;
+}
+
+body {
+	background-image: url("assets/paper.jpg");
+	background-size: 100%;
+	display: flex;
+	align-items: stretch;
+}
+
+.user {
+	width: 50%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	height: 100vh;
+	align-items: center;
+}
+
+.machine {
+	width: 50%;
+}
+
+.headline {
+	
+}
+
+.botoes {
+	
+}
+
+button {
+	background-size: 100% 100%;
+	width: 200px;
+	height: 100px;
+	border-style: none;
+}
+
+.botoes > button {
+	cursor: pointer;
+}
+
+.botoesmachine > button {
+	cursor: not-allowed;
+}
+
+.rock {
+	background-image: url("assets/btnrock.webp");
+}
+
+.rockmachine {
+	background-image: url("assets/btnrockmachine.webp");
+}
+
+.paper {
+	background-image: url("assets/btnpaper.webp");
+}
+
+.papermachine{
+	background-image: url("assets/btnpapermachine.webp");
+}
+
+.scissors {
+	background-image: url("assets/btnscissors.webp");
+}
+
+.scissorsmachine {
+	background-image: url("assets/btnscissorsmachine.webp");
+}
+
+.profilePic {
+	width: 150px;
+	height: 150px;
+}

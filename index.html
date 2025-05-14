@@ -4,16 +4,40 @@
 		<meta charset='UTF-8'>
 		<title>lady gaga</title>
 		<script type='module' src='script.js'></script>
+		<link rel='stylesheet' href='style.css'>
 	</head>
 	<body>
-		<div class='botoes'>
-			<button id='rock'>rock</button>
-			<button id='paper'>paper</button>
-			<button id='scissors'>scissors</button>
-		</div>
-		<div class='results'>
+		<section class='user'>
+			<div class='headline'>
+				<picture class='profilePic'>
+					<img src='assets/humano.png' width='150' height='150'>
+				</picture>
+				<picture class='name'>
+					<img src='assets/you.png' width='400' height='150'>
+				</picture>
+			</div>
+			<div class='botoes'>
+				<button id='rock' class='rock'></button>
+				<button id='paper' class='paper'></button>
+				<button id='scissors' class='scissors'></button>
+			</div>
+		</section>
+		<section class='machine'>
+			<div class='headline'>
+				<picture class='name'>
+				</picture>
+				<picture class='profilePic'>
+				</picture>
+			</div>
+			<div class='botoesmachine'>
+				<button class='rockmachine'></button>
+				<button class='papermachine'></button>
+				<button class='scissorsmachine'></button>
+			</div>
+		</section>
+		<!-- <div class='results'>
 			<p class='roundResult'></p>
 			<p class='score'></p>
-		</div>
+		</div> -->
 	</body>
 </html>
