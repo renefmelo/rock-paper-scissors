@@ -11,6 +11,9 @@ const botoes = document.querySelector('.botoes');
 const roundResult = document.querySelector('.roundResult');
 const score = document.querySelector('.score');
 
+const choiceImg = document.querySelector('.choiceImg');
+
+
 botoes.addEventListener('click', (event) => {
 	let target = event.target;
 
@@ -57,6 +60,7 @@ function playRound(humanChoice, computerChoice) {
 				break;
 		}
 	} else if (humanChoice === `paper`) {
+		choiceImg.setAttribute("src", "assets/paperimg.png");
 		switch (computerChoice) {
 			case `rock`:
 				humanScore += 1;
