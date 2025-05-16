@@ -1,3 +1,12 @@
+/* schoolbell-regular - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Schoolbell';
+  font-style: normal;
+  font-weight: 400;
+  src: url('./fonts/schoolbell-v18-latin-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
 * {
 	margin: 0px;
 	padding: 0px;
@@ -8,6 +17,7 @@ body {
 	background-size: 100%;
 	display: flex;
 	align-items: stretch;
+	font-family: 'Schoolbell', 'Arial', monospace;
 }
 
 .user, .machine{
@@ -20,6 +30,43 @@ body {
 	padding-top: 10px;
 	padding-bottom: 10px;
 	box-sizing: border-box;
+	flex-shrink: 0;
+}
+
+.headline {
+	display: flex;
+}
+
+.humanScore, .computerScore {
+	align-self: center;
+	font-size: 50px;
+}
+
+.humanScore {
+	padding-left: 50px;
+}
+
+.computerScore {
+	padding-right: 50px;
+}
+
+.results {
+	position: absolute;
+	left: 40vw;
+	right: 35vw;
+	top: 40vh;
+	display: flex;
+	flex-direction: column;
+}
+
+.roundResult {
+	font-size: 50px;
+	text-transform: uppercase;
+}
+
+.roundResultTwo {
+	font-size: 40px;
+	text-transform: uppercase;
 }
 
 .headline {

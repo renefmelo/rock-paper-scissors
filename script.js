@@ -9,10 +9,14 @@ let getComputerChoice = () => (random() <= 33) ? `rock` : (random() <= 66) ? `pa
 const botoes = document.querySelector('.botoes');
 
 const roundResult = document.querySelector('.roundResult');
+const roundResultTwo = document.querySelector('.roundResultTwo');
 const score = document.querySelector('.score');
 
 const choiceImg = document.querySelector('.choiceImg');
+const machineChoiceImg = document.querySelector('.machineChoiceImg');
 
+const humanScoreDiv = document.querySelector('.humanScore');
+const computerScoreDiv = document.querySelector('.computerScore');
 
 botoes.addEventListener('click', (event) => {
 	let target = event.target;
@@ -43,64 +47,93 @@ function playRound(humanChoice, computerChoice) {
 	}
 
 	if (humanChoice === `rock`) {
+		choiceImg.setAttribute("src", "assets/rockimg.png");
 		switch (computerChoice) {
 			case `rock`:
-				roundResult.textContent = `It's a draw! Rock on Rock violence.`;
-				score.textContent = `Humanity: ${humanScore}, Machines: ${computerScore}`
+				machineChoiceImg.setAttribute("src", "assets/rockimg.png");
+				roundResult.textContent = `It's a draw!`;
+				roundResultTwo.textContent = `Rock on Rock violence.`;
+				humanScoreDiv.textContent = `${humanScore}`; 
+				computerScoreDiv.textContent = `${computerScore}`;
 				break;
 			case `paper`:
+				machineChoiceImg.setAttribute("src", "assets/paperimg.png");
 				computerScore += 1;
-				roundResult.textContent = `You lost! The computer's Paper folds around your Rock.`;
-				score.textContent = `Humanity: ${humanScore}, Machines: ${computerScore}`;
+				roundResult.textContent = `You lost!`;
+				roundResultTwo.textContent = `The computer's Paper folds around your Rock.`;
+				humanScoreDiv.textContent = `${humanScore}`; 
+				computerScoreDiv.textContent = `${computerScore}`;
 				break;
 			case `scissors`:
+				machineChoiceImg.setAttribute("src", "assets/scissorsimg.png");
 				humanScore += 1;
-				roundResult.textContent = `You win! Your Rock breaks the computer's Scissors.`;
-				score.textContent = `Humanity: ${humanScore}, Machines: ${computerScore}`;
+				roundResult.textContent = `You win!`; 
+				roundResultTwo.textContent = `Your Rock breaks the computer's Scissors.`;
+				humanScoreDiv.textContent = `${humanScore}`; 
+				computerScoreDiv.textContent = `${computerScore}`;
 				break;
 		}
 	} else if (humanChoice === `paper`) {
 		choiceImg.setAttribute("src", "assets/paperimg.png");
 		switch (computerChoice) {
 			case `rock`:
+				machineChoiceImg.setAttribute("src", "assets/rockimg.png");
 				humanScore += 1;
-				roundResult.textContent = `You win! Your Paper paperizes the computer's Rock.`;
-				score.textContent = `Humanity: ${humanScore}, Machines: ${computerScore}`;
+				roundResult.textContent = `You win` 
+				roundResultTwo.textContent = `Your Paper paperizes the computer's Rock.`;
+				humanScoreDiv.textContent = `${humanScore}`; 
+				computerScoreDiv.textContent = `${computerScore}`;
 				break;
 			case `paper`:
-				roundResult.textContent = `It's a draw! The Papers refuse to fight each other.`;
-				score.textContent = `Humanity: ${humanScore}, Machines: ${computerScore}`;
+				machineChoiceImg.setAttribute("src", "assets/paperimg.png");
+				roundResult.textContent = `It's a draw!` 
+				roundResultTwo.textContent = `The Papers refuse to fight each other.`;
+				humanScoreDiv.textContent = `${humanScore}`; 
+				computerScoreDiv.textContent = `${computerScore}`;
 				break;
 			case `scissors`:
+				machineChoiceImg.setAttribute("src", "assets/scissorsimg.png");
 				computerScore += 1;
-				roundResult.textContent = `You lose! The computer's Scissors cut through your Paper.`;
-				score.textContent = `Humanity: ${humanScore}, Machines: ${computerScore}`;
+				roundResult.textContent = `You lose!` 
+				roundResultTwo.textContent = `The computer's Scissors cut through your Paper.`;
+				humanScoreDiv.textContent = `${humanScore}`; 
+				computerScoreDiv.textContent = `${computerScore}`;
 				break;
 		}
 	} else if (humanChoice === `scissors`) {
+		choiceImg.setAttribute("src", "assets/scissorsimg.png");
 		switch (computerChoice) {
 			case `rock`:
+				machineChoiceImg.setAttribute("src", "assets/rockimg.png");
 				computerScore += 1;
-				roundResult.textContent = `You lose! The computer's Rock absolutely destroys your Scissors.`;
-				score.textContent = `Humanity: ${humanScore}, Machines: ${computerScore}`;
+				roundResult.textContent = `You lose!` 
+				roundResultTwo.textContent = `The computer's Rock absolutely destroys your Scissors.`;
+				humanScoreDiv.textContent = `${humanScore}`; 
+				computerScoreDiv.textContent = `${computerScore}`;
 				break;
 			case `paper`:
+				machineChoiceImg.setAttribute("src", "assets/paperimg.png");
 				humanScore += 1;
-				roundResult.textContent = `You win! Your Scissors rip the machine's Paper apart.`;
-				score.textContent = `Humanity: ${humanScore}, Machines: ${computerScore}`;
+				roundResult.textContent = `You win!` 
+				roundResultTwo.textContent = `Your Scissors rip the machine's Paper apart.`;
+				humanScoreDiv.textContent = `${humanScore}`; 
+				computerScoreDiv.textContent = `${computerScore}`;
 				break;
 			case `scissors`:
-				roundResult.textContent = `It's a draw! The Scissors start Scissoring.`;
-				score.textContent = `Humanity: ${humanScore}, Machines: ${computerScore}`;
+				machineChoiceImg.setAttribute("src", "assets/scissorsimg.png");
+				roundResult.textContent = `It's a draw!`
+				roundResultTwo.textContent = `The Scissors start Scissoring.`;
+				humanScoreDiv.textContent = `${humanScore}`; 
+				computerScoreDiv.textContent = `${computerScore}`;
 				break;
 		}
 	}
 
 	if (humanScore === 5 || computerScore === 5) {
-		let winnerText = () => (humanScore > computerScore) ? `You're a winner baby!` : (humanScore < computerScore) ? `The machine won the game. The machine always wins.` : `The game ended in a draw! You should go for a rematch!`;
+		let winnerText = () => (humanScore > computerScore) ? `You won the game baby!` : (humanScore < computerScore) ? `The machine won the game. The machine always wins.` : `The game ended in a draw! You should go for a rematch!`;
 
-		winnerMessage.textContent = winnerText();
-		results.appendChild(winnerMessage);
+		roundResult.textContent = winnerText();
+		roundResultTwo.textContent = ``;
 		
 		humanScore = 0;
 		computerScore = 0;
